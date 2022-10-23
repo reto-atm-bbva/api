@@ -34,7 +34,9 @@ class AtmRepository implements IAtm
             ],
         ));
 
-        return Atm::select('*', $whereSentences);
+        $whereSentences .= Atm::limitSQL(1);
+
+        return Atm::select('*', $whereSentences)->firstOrFail();
 
     }
 
