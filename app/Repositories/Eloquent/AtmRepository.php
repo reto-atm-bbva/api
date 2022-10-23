@@ -18,4 +18,28 @@ class AtmRepository implements IAtm
     {
         return Atm::find($id);
     }
+
+    public function findByLatLng($lat, $lng)
+    {
+        $whereSentences = Atm::whereMultipleSQL(array(
+            [
+                'field' => "Latitud",
+                'operator' => "=",
+                'value' => $lat
+            ],
+            [
+                'field' => "Longitud",
+                'operator' => "=",
+                'value' => $lng
+            ],
+        ));
+
+        return Atm::select('*', $whereSentences);
+
+    }
+
+    public function allWithLimit($limit)
+    {
+        return Atm::all('*', $limit);
+    }
 }

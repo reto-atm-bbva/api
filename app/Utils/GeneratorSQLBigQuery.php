@@ -21,6 +21,11 @@ trait GeneratorSQLBigQuery
     }
 
 
+    /**
+     * @param $params array
+     * @param $comparation
+     * @return string
+     */
     public static function whereMultipleSQL($params, $comparation = 'AND')
     {
         $where = "";

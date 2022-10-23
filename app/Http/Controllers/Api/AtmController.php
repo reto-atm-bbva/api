@@ -23,6 +23,10 @@ class AtmController extends Controller
      */
     public function index()
     {
+
+        if ($limit = \request('limit')) {
+            return $this->atm->allWithLimit($limit);
+        }
         return $this->atm->all();
     }
 
@@ -31,5 +35,19 @@ class AtmController extends Controller
     {
         return $this->atm->find($id);
     }
+
+    public function findByLatLng(Request $request)
+    {
+        $lat = $request->get('lat');
+        $lng = $request->get('lng');
+
+        if ($lat && $lng) {
+            return $this->atm->findByLatLng($lat, $lng);
+        }
+
+        throw new \Exception("Invalid data params", 429);
+
+    }
+
 
 }
