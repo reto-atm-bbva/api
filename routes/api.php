@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AtmController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('data', [\App\Http\Controllers\WelcomeController::class, 'getData']);
+//Route::get('data', [\App\Http\Controllers\WelcomeController::class, 'getData']);
+
+
+Route::prefix('atms')->group(function () {
+
+    Route::get('/', [AtmController::class, 'index']);
+});
