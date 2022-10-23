@@ -33,7 +33,11 @@ class AtmResource extends JsonResource
             'Longitud' => (float)$this['Longitud'],
             'Tipo_localidad' => $this['Tipo_localidad'],
             'IDC' => $this['IDC'],
-            'ETV' => $this['ETV']
+            'ETV' => $this['ETV'],
+            'maps' => [
+                'lat' => (float)$this['Latitud'],
+                'lng' => (float)$this['Longitud'],
+            ]
         ];
     }
 }
